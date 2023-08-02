@@ -1,0 +1,87 @@
+﻿@model IEnumerable<FileConvertProject.Models.FileConvert>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table" >
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Information)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoftwareNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HardwareNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FilePath)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Information)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoftwareNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HardwareNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FilePath)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+                <td>
+                    <a class="btn btn-warning" asp-action="UploadFile" asp-route-id="@item.Id">Upload</a> 
+                </td>
+                <td>
+                    <a class="btn btn-success" asp-action="Details" asp-route-id="@item.Id">Details</a> 
+                </td>
+                <td>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+                <td>
+                    <a class="btn btn-info" asp-action="deneme1" asp-route-id="@item.Id">PDF</a>
+                </td>
+                <td>
+                    <a class="btn btn-primary" asp-action="deneme2" asp-route-id="@item.Id">Word</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+                @*POPUP 
+                download yapılacak*@
