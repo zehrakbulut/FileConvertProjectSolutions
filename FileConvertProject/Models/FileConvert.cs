@@ -11,8 +11,6 @@ namespace FileConvertProject.Models
         public string SoftwareNumber { get; set; }
         public string HardwareNumber { get; set; }
         public DateTime Date { get; set; }
-        public string FilePath { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
+        public string? FilePath { get; set; }
     }
 }

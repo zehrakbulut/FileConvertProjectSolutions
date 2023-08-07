@@ -10,7 +10,7 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table" >
+<table class="table">
     <thead>
         <tr>
             <th>
@@ -27,12 +27,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.FilePath)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Username)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Password)
             </th>
             <th></th>
         </tr>
@@ -57,31 +51,31 @@
                     @Html.DisplayFor(modelItem => item.FilePath)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Username)
+                    <a class="btn btn-warning" asp-action="UploadFile" asp-route-id="@item.Id">Upload</a>
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Password)
-                </td>
-                <td>
-                    <a class="btn btn-warning" asp-action="UploadFile" asp-route-id="@item.Id">Upload</a> 
-                </td>
-                <td>
-                    <a class="btn btn-success" asp-action="Details" asp-route-id="@item.Id">Details</a> 
+                    <a class="btn btn-success" asp-action="Details" asp-route-id="@item.Id">Details</a>
                 </td>
                 <td>
                     <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
                 <td>
-                    <a class="btn btn-info" asp-action="deneme1" asp-route-id="@item.Id">PDF</a>
+                    <a class="btn btn-info" asp-action="byteTotext" asp-route-id="@item.Id" itemid="deneme">byte</a>
                 </td>
                 <td>
-                    <a class="btn btn-primary" asp-action="deneme2" asp-route-id="@item.Id">Word</a>
+                    <a class="btn btn-primary" asp-action="textToHex" asp-route-id="@item.Id">Hex</a>
+                </td>
+                <td>
+                    <a class="btn btn-primary" asp-action="hexToText" asp-route-id="@item.Id">Text</a>
+                </td>
+                <td>
+                    <a class="btn btn-primary" asp-action="changeExtension" asp-route-id="@item.Id">chance</a>
+                </td>
+                <td>
+                    <a class="btn btn-primary" asp-action="aramaListe" asp-route-id="@item.Id">Search</a>
                 </td>
             </tr>
         }
+        
     </tbody>
 </table>
-
-
-                @*POPUP 
-                download yapılacak*@
