@@ -128,35 +128,58 @@ namespace FileConvertProject.Controllers
             }
         }
 
-        public void changeExtension()
+
+        public string ConvertToBinaryAndChangeExtension()
         {
-            string dosyaYolu = "C:\\Users\\ZEHRA\\OneDrive\\Masaüstü\\FH612 - 00217 - Kopya.dtf";
-            string yeniUzanti = ".bin";
+            string uploadedFilePath = "C:\\Users\\ZEHRA\\OneDrive\\Masaüstü\\FH612 - 00217.dtf"; // Yüklenen dosyanın yolu
 
-            // Dosyanın var olup olmadığını kontrol ediyoruz.
-            if (System.IO.File.Exists(dosyaYolu))
+            try
             {
-                try
-                {
-                    // Yeni dosya yolu oluşturuluyor
-                    string yeniDosyaYolu = Path.ChangeExtension(dosyaYolu, yeniUzanti);
-                    // Dosyanın uzantısı değiştiriliyor
-                    System.IO.File.Move(dosyaYolu, yeniDosyaYolu);
+                byte[] fileContent = System.IO.File.ReadAllBytes(uploadedFilePath); // Dosyanın içeriğini binary olarak okuyun
 
-                    byte[] dosyaVerisi = System.IO.File.ReadAllBytes(yeniDosyaYolu);
+                // Dosyanın uzantısını .bin olarak değiştirin
+                string newFilePath = Path.ChangeExtension(uploadedFilePath, ".bin");
 
-                }
-                catch (Exception ex)
-                {
-                    // Hata yönetimi burada yapılmalı
-                    Console.WriteLine("Hata oluştu: " + ex.Message);
-                }
+                // Dosyanın içeriği binary olarak yeni dosyaya yazılıyor
+                System.IO.File.WriteAllBytes(newFilePath, fileContent);
+                System.IO.File.Delete(uploadedFilePath);
+
+                return "Dosyanın içeriği başarıyla binary formatına dönüştürüldü ve uzantısı .bin olarak değiştirildi.";
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine("Dosya bulunamadı.");
+                return "Hata oluştu: " + ex.Message;
             }
         }
+        //public void changeExtension()
+        //{
+        //    string dosyaYolu = "C:\\Users\\ZEHRA\\OneDrive\\Masaüstü\\FH612 - 00217 - Kopya.dtf";
+        //    string yeniUzanti = ".bin";
+
+        //    // Dosyanın var olup olmadığını kontrol ediyoruz.
+        //    if (System.IO.File.Exists(dosyaYolu))
+        //    {
+        //        try
+        //        {
+        //            // Yeni dosya yolu oluşturuluyor
+        //            string yeniDosyaYolu = Path.ChangeExtension(dosyaYolu, yeniUzanti);
+        //            // Dosyanın uzantısı değiştiriliyor
+        //            System.IO.File.Move(dosyaYolu, yeniDosyaYolu);
+
+        //            byte[] dosyaVerisi = System.IO.File.ReadAllBytes(yeniDosyaYolu);
+
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            // Hata yönetimi burada yapılmalı
+        //            Console.WriteLine("Hata oluştu: " + ex.Message);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine("Dosya bulunamadı.");
+        //    }
+        //}
 
         public static bool IsBetweenAddresses(string target, string start, string end)
         {
