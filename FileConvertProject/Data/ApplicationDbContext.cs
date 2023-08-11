@@ -14,5 +14,7 @@ namespace FileConvertProject.Data
             fileConverts
         { get; set; }
         public DbSet<ApplicationUser> applicationUsers { get; set; }
+        public DbSet<FileRange> FileRanges { get; set; }
+
     }
 }
